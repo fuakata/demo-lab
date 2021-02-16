@@ -38,7 +38,7 @@ OVA="$HOME/path/to/ova/focal-server-cloudimg-amd64.ova"
 DATASTORE="datastore"
 # Target network assign to VM template.
 NETWORK="VM Network"
-# Name assing to VM template.
+# Name assign to VM template.
 VM_NAME="ubuntu-focal-20.04-template"
 # Hostname assign to VM template.
 VM_HOSTNAME="ubuntu-cloud"

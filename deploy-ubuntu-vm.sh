@@ -38,7 +38,7 @@ OVA="$HOME/path/to/ova/focal-server-cloudimg-amd64.ova"
 DATASTORE="datastore"
 # Target network assign to VM.
 NETWORK="VM Network"
-# Name assing to VM.
+# Name assign to VM.
 VM_NAME="ubuntu-vm1"
 # Hostname assign to VM.
 VM_HOSTNAME="ubuntu-cloud"

@@ -38,23 +38,23 @@ OVA="$HOME/path/to/ova/Nested_ESXi7.0u1_Appliance_Template_v1.ova"
 DATASTORE="datastore"
 # Target network assign to VM.
 NETWORK="VM Network"
-# Name assing to VM.
+# Name assign to VM.
 ESXI_NODE1_HOSTNAME="esxi-node-1"
 ESXI_NODE2_HOSTNAME="esxi-node-2"
 ESXI_NODE3_HOSTNAME="esxi-node-3"
-# Name assing to VM.
+# Name assign to VM.
 ESXI_NODE1_IP="192.168.1.x"
 ESXI_NODE2_IP="192.168.1.x"
 ESXI_NODE3_IP="192.168.1.x"
-# Name assing to VM.
+# Name assign to VM.
 ESXI_NETMASK="255.255.255.0"
-# Name assing to VM.
+# Name assign to VM.
 ESXI_GATEWAY="192.168.1.x"
-# Name assing to VM.
+# Name assign to VM.
 ESXI_DNS="192.168.1.x"
-# Name assing to VM.
+# Name assign to VM.
 ESXI_DOMAIN="mylab.local"
-# Password assing to the ESXi.
+# Password assign to the ESXi.
 ESXI_PASSWD="Password123!"
 
 # OVFTool deployment.
