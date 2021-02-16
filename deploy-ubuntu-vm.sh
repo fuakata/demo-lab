@@ -26,25 +26,19 @@ echo
 echo
 
 # Set variables to declare LAB specific resources.
-# vCenter administrator user name.
+# vCenter administrator user name and password, vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
+# Path to OVA/OFV file, destination datastore and target network.
 ADMIN="administrator@vsphere.local"
-# vCenter administrator password.
 PASSWORD='Password123!'
-# vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
 TARGET="vcsa.mylab.local/LAB/host/esxi.mylab.local"
-# Path to OVA/OVF file.
 OVA="$HOME/path/to/ova/focal-server-cloudimg-amd64.ova"
-# Destination datastore to copy the VM.
 DATASTORE="datastore"
-# Target network assign to VM.
 NETWORK="VM Network"
-# Name assign to VM.
+
+# Assing names, IP addresses, public key and one time password to Ubuntu Cloud Image VM.
 VM_NAME="ubuntu-vm1"
-# Hostname assign to VM.
 VM_HOSTNAME="ubuntu-cloud"
-# Public key assign to VM.
-VM_KEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDsVlBiFo1gdjA/wctJULb6O+t0GKtTMdKwOgSL+Nx84LAJicr1O61W3wpkHhUyCZ+9LtBEFc41hgrLrbpWBvhW6eLoA76HNgB0md3q44Dw9ZCVYWsp4WxaounSbOeaO4v2XAdnQv3u7pr7m9HG3zoiJhHaTgYhAP7Qv0mG3RENayynbDVofJXJdwtsZXTFQLnxN6vZrG6rAdwx9PHkGN4O+rxAH0IwcI+xOMxFpO2DNLevtfM2nga7UOvjiOCyCSb/othIi4PAwZPaSNkdjWNvueEkLLspFhJ1Q91I7acre/QooN+ifDkfG6XGcaDKUHis5FUq2vtNEfQT2Hx+7rInxcBMBfOD9Z2e+HLnwpUtTdRU2DtCBsN8PMU5iyj2ClcB3a1wE7AzKYXmq1TlckyesxZUeCq1Y8yxmXfgoDvjyyN31AnXIhyduLXpLpVINvtRWlM4XB6jWC+kNieiuoLsAeJkeCsGdpNkmdVhsBTWVDfJ3MuoY5mrXd7LeFLIsKTUWk1J6Q2jQ+PmB3o9HeesC0VSj7GElndWNqSbSNy7e/D48XwydqsesrKaZcs4HIc8zkEYbaibYvE6NbFMo0BYVFK/+6ip2tcAAF0iNpUx30ox3paIoaURByb26SGZXTTy/IDREYAtCah5OWE8KrlePpwTYogqm5WCFAQPvgfT7Q== pepe.garces@gmail.com"
-# One time pasword assign to VM.
+VM_KEY="copy-your-public-ssh-key-here"
 VM_PASSWORD="Password123!"
 
 # OVF Tool deployment.

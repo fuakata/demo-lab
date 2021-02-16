@@ -26,35 +26,26 @@ echo
 echo
 
 # Set variables to declare LAB specific resources.
-# vCenter administrator user name.
+# vCenter administrator user name and password, vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
+# Path to OVA/OFV file, destination datastore and target network. vCenter administrator user name.
 ADMIN="administrator@vsphere.local"
-# vCenter administrator password.
 PASSWORD="Password123!"
-# vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
 TARGET="vcsa.mylab.local/LAB/host/esxi.mylab.local"
-# Path to OVA/OVF file.
 OVA="$HOME/path/to/ova/Nested_ESXi7.0u1_Appliance_Template_v1.ova"
-# Destination datastore to copy VM.
 DATASTORE="datastore"
-# Target network assign to VM.
 NETWORK="VM Network"
-# Name assign to VM.
+
+# Assing names, IP addresses and password to ESXi servers.
 ESXI_NODE1_HOSTNAME="esxi-node-1"
 ESXI_NODE2_HOSTNAME="esxi-node-2"
 ESXI_NODE3_HOSTNAME="esxi-node-3"
-# Name assign to VM.
 ESXI_NODE1_IP="192.168.1.x"
 ESXI_NODE2_IP="192.168.1.x"
 ESXI_NODE3_IP="192.168.1.x"
-# Name assign to VM.
 ESXI_NETMASK="255.255.255.0"
-# Name assign to VM.
 ESXI_GATEWAY="192.168.1.x"
-# Name assign to VM.
 ESXI_DNS="192.168.1.x"
-# Name assign to VM.
 ESXI_DOMAIN="mylab.local"
-# Password assign to the ESXi.
 ESXI_PASSWD="Password123!"
 
 # OVFTool deployment.

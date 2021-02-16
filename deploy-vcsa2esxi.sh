@@ -24,31 +24,23 @@ read -n 1 -s -r -p "Press any key to continue or Control-C to abort."
 echo
 echo
 
+# Set variables to declare LAB specific resources.
+# ESXi administrator and password, host IP address.
+# Path to OVA/OFV file, destination datastore and target network.
 ADMIN="root"
-# vCenter administrator password.
 PASSWORD="Password123!"
-# vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
 TARGET="192.168.1.x"
-
-# Path to OVA/OVF file.
 OVA="$HOME/path/to/ova/VMware-vCenter-Server-Appliance-7.0.1.00100-17004997_OVF10.ova"
-# Destination datastore to copy VCSA.
 DATASTORE="datastore"
-# Target network assign to VCSA.
 NETWORK="VM Network"
-# Name assing to VCSA.
+
+# Assign name, IP address networking, SSO user password and root password to VCSA.
 VCSA_NAME="vcsa"
-# Host network IP address family.
 VCSA_IP_FAMLIY="ipv4"
-# Host network mode.
 VCSA_IP_MODE="dhcp"
-# Host network default gateway.
 VCSA_GATEWAY="192.168.1.x"
-# Host network DNS server.
 VCSA_DNS="192.168.1.x"
-# SSO configuration.
 VCSA_PASSWD="Password123!"
-# Root password.
 VCSA_ROOT_PASSWD="Password123!"
 
 # OVFTool deployment.

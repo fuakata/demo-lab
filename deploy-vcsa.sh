@@ -25,31 +25,22 @@ echo
 echo
 
 # Set variables to declare LAB specific resources.
-# vCenter administrator user name.
+# vCenter administrator user name and password, vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
+# Path to OVA/OFV file, destination datastore and target network.
 ADMIN="administrator@vsphere.local"
-# vCenter administrator password.
 PASSWORD="Password123!"
-# vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
 TARGET="vcsa.mylab.local/LAB/host/esxi.mylab.local"
-# Path to OVA/OVF file.
 OVA="$HOME/path/to/ova/VMware-vCenter-Server-Appliance-7.0.1.00100-17004997_OVF10.ova"
-# Destination datastore to copy VCSA.
 DATASTORE="datastore"
-# Target network assign to VCSA.
 NETWORK="VM Network"
-# Name assing to VCSA.
+
+# Assign name, IP address networking, SSO user password and root password to VCSA.
 VCSA_NAME="vcsa"
-# Host network IP address family.
 VCSA_IP_FAMLIY="ipv4"
-# Host network mode.
 VCSA_IP_MODE="dhcp"
-# Host network default gateway.
 VCSA_GATEWAY="192.168.1.x"
-# Host network DNS server.
 VCSA_DNS="192.168.1.x"
-# SSO configuration.
 VCSA_PASSWD="Password123!"
-# Root password.
 VCSA_ROOT_PASSWD="Password123!"
 
 # OVFTool deployment.
