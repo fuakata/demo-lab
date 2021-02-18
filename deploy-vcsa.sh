@@ -31,7 +31,7 @@ PASSWORD="Password123!"
 TARGET="192.168.0.x"
 OVA="$HOME/path/to/ova/VMware-vCenter-Server-Appliance-7.0.1.00100-17004997_OVF10.ova"
 
-# Assign name, VCSA size, hostname, IP address networking, SSO user password and root password to VCSA.
+# Assign VCSA VM name, VCSA size, host Fully Qualified Domain Name (FQDN) or IP address, IP address networking, SSO user password and root password to VCSA.
 VCSA_NAME="vcsa-lab"
 VCSA_SIZE="tiny"
 VCSA_IP="192.168.0.x"
