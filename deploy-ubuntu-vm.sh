@@ -10,7 +10,7 @@ echo  "| |_| | |___| |  | | |_| | | |___ / ___ \| |_) |"
 echo  "|____/|_____|_|  |_|\___/  |_____/_/   \_\____/"
 echo
 echo
-echo This script will deploy one Ubuntu Cloud Image as a VM on nested LAB using the OVFTool.
+echo This script will deploy one Ubuntu Cloud Image as a VM using the OVFTool.
 echo
 echo Requirements:
 echo VMware ESXi host.
