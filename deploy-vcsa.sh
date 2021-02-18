@@ -68,7 +68,7 @@ ovftool \
     --datastore="${VCSA_DATASTORE}" \
     --deploymentOption=${VCSA_SIZE} \
     --prop:guestinfo.cis.deployment.node.type=embedded \
-    --prop:guestinfo.cis.addrppliance.net.addr=${VCSA_IP} \
+    --prop:guestinfo.cis.appliance.net.addr=${VCSA_IP} \
     --prop:guestinfo.cis.appliance.net.pnid=${VCSA_HOSTNAME} \
     --prop:guestinfo.cis.appliance.net.mode=static \
     --prop:guestinfo.cis.appliance.net.addr.family=ipv4 \
