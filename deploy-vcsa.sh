@@ -10,7 +10,7 @@ echo  "| |_| | |___| |  | | |_| | | |___ / ___ \| |_) |"
 echo  "|____/|_____|_|  |_|\___/  |_____/_/   \_\____/"
 echo
 echo
-echo This script will deploy one vCenter Server Appliance on nested LAB using OVFTool.
+echo This script will deploy one vCenter Server Appliance using OVFTool.
 echo
 echo Requirements:
 echo VMware ESXi host
@@ -25,46 +25,63 @@ echo
 echo
 
 # Set variables to declare LAB specific resources.
-# vCenter administrator user name and password, vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
-# Path to OVA/OFV file, destination datastore and target network.
-ADMIN="administrator@vsphere.local"
-PASSWORD="Password123!"
-TARGET="vcsa.mylab.local/LAB/host/esxi.mylab.local"
-OVA="$HOME/path/to/ova/VMware-vCenter-Server-Appliance-7.0.1.00100-17004997_OVF10.ova"
-DATASTORE="datastore"
-NETWORK="VM Network"
+# ESXi administrator and password, host IP address & path to OVA/OFV file.
+ADMIN="root"
+PASSWORD="Password#1234"
+TARGET=192.168.86.175
+OVA="$HOME/Downloads/OVA/VMware-vCenter-Server-Appliance-7.0.1.00100-17004997_OVF10.ova"
 
-# Assign name, IP address networking, SSO user password and root password to VCSA.
-VCSA_NAME="vcsa"
-VCSA_IP_FAMLIY="ipv4"
-VCSA_IP_MODE="dhcp"
-VCSA_GATEWAY="192.168.1.x"
-VCSA_DNS="192.168.1.x"
-VCSA_PASSWD="Password123!"
-VCSA_ROOT_PASSWD="Password123!"
+# Assign name, VCSA size, hostname, IP address networking, SSO user password and root password to VCSA.
+VCSA_NAME="vcsa-test"
+VCSA_SIZE="tiny"
+VCSA_IP="192.168.25.99"
+VCSA_HOSTNAME="192.168.25.99"
+VCSA_GW="192.168.25.1"
+VCSA_CIDR="24"
+VCSA_DNS="192.168.25.5"
+VCSA_NTP="pool.ntp.org"
+VCSA_SSO_DOMAIN="vsphere.local"
+VCSA_SSO_PASSWORD="Password123!"
+VCSA_PASSWORD="Password123!"
+VCSA_NETWORK="LAB Network"
+VCSA_DATASTORE="truenas"
+VCSA_ALLSTAGES="True"
+
 
 # OVFTool deployment.
 echo
 echo Deploying VMware vCenter Server Appliance...
 ovftool \
-    --acceptAllEulas \
-    --allowExtraConfig \
-    --ipProtocol=IPv4 \
-    --diskMode=thin \
-    --overwrite \
     --powerOffTarget \
+    --overwrite \
     --powerOn \
-    --name="${VCSA_NAME}" \
-    --network="${NETWORK}" \
-    --datastore="${DATASTORE}" \
-    --X:enableHiddenProperties \
-    --X:waitForIpv4 \
+    --X:injectOvfEnv \
     --X:logFile=ovftool-log.txt \
     --X:logLevel=verbose \
-    --prop:guestinfo.cis.appliance.net.addr.family="${VCSA_IP_FAMILY}" \
-    --prop:guestinfo.cis.appliance.net.mode="${VCSA_IP_MODE}" \
-    --prop:guestinfo.cis.appliance.net.gateway="${VCSA_GATEWAY}" \
-    --prop:guestinfo.cis.appliance.net.dns.servers="${VCSA_DNS}" \
-    --prop:guestinfo.cis.vmdir.password="${VCSA_PASSWD}" \
-    --prop:guestinfo.cis.appliance.root.passwd="${VCSA_ROOT_PASSWD}" \
-    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}"
+    --acceptAllEulas \
+    --noSSLVerify \
+    --sourceType=OVA \
+    --allowExtraConfig \
+    --diskMode=thin \
+    --name="${VCSA_NAME}" \
+    --net:"Network 1"="${VCSA_NETWORK}" \
+    --datastore="${VCSA_DATASTORE}" \
+    --deploymentOption=${VCSA_SIZE} \
+    --prop:guestinfo.cis.deployment.node.type=embedded \
+    --prop:guestinfo.cis.addrppliance.net.addr=${VCSA_IP} \
+    --prop:guestinfo.cis.appliance.net.pnid=${VCSA_HOSTNAME} \
+    --prop:guestinfo.cis.appliance.net.mode=static \
+    --prop:guestinfo.cis.appliance.net.addr.family=ipv4 \
+    --prop:guestinfo.cis.appliance.net.prefix=${VCSA_CIDR} \
+    --prop:guestinfo.cis.appliance.net.gateway=${VCSA_GW} \
+    --prop:guestinfo.cis.appliance.ntp.servers=${VCSA_NTP} \
+    --prop:guestinfo.cis.appliance.net.dns.servers=${VCSA_DNS} \
+    --prop:guestinfo.cis.vmdir.domain-name=${VCSA_SSO_DOMAIN} \
+    --prop:guestinfo.cis.vmdir.password=${VCSA_SSO_PASSWORD} \
+    --prop:guestinfo.cis.appliance.root.passwd=${VCSA_PASSWORD} \
+    --prop:guestinfo.cis.system.vm0.port=443 \
+    --prop:guestinfo.cis.appliance.ssh.enabled=True \
+    --prop:guestinfo.cis.ceip_enabled=True \
+    --prop:guestinfo.cis.vmdir.first-instance=True \
+    --prop:guestinfo.cis.deployment.autoconfig=${VCSA_ALLSTAGES} \
+    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}/"
