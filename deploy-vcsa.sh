@@ -27,24 +27,24 @@ echo
 # Set variables to declare LAB specific resources.
 # ESXi administrator and password, host IP address & path to OVA/OFV file.
 ADMIN="root"
-PASSWORD="Password#1234"
-TARGET=192.168.86.175
-OVA="$HOME/Downloads/OVA/VMware-vCenter-Server-Appliance-7.0.1.00100-17004997_OVF10.ova"
+PASSWORD="Password123!"
+TARGET="192.168.0.x"
+OVA="$HOME/path/to/ova/VMware-vCenter-Server-Appliance-7.0.1.00100-17004997_OVF10.ova"
 
 # Assign name, VCSA size, hostname, IP address networking, SSO user password and root password to VCSA.
-VCSA_NAME="vcsa-test"
+VCSA_NAME="vcsa-lab"
 VCSA_SIZE="tiny"
-VCSA_IP="192.168.25.99"
-VCSA_HOSTNAME="192.168.25.99"
-VCSA_GW="192.168.25.1"
+VCSA_IP="192.168.0.x"
+VCSA_HOSTNAME="192.168.0.x"
+VCSA_GW="192.168.0.x"
 VCSA_CIDR="24"
-VCSA_DNS="192.168.25.5"
+VCSA_DNS="192.168.0.x"
 VCSA_NTP="pool.ntp.org"
 VCSA_SSO_DOMAIN="vsphere.local"
 VCSA_SSO_PASSWORD="Password123!"
 VCSA_PASSWORD="Password123!"
-VCSA_NETWORK="LAB Network"
-VCSA_DATASTORE="truenas"
+VCSA_NETWORK="VM Network"
+VCSA_DATASTORE="datastore"
 VCSA_ALLSTAGES="True"
 
 
