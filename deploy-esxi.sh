@@ -26,14 +26,12 @@ echo
 echo
 
 # Set variables to declare LAB specific resources.
-# vCenter administrator user name and password, vCenter and ESXi host Fully Qualified Domain Name (FQDN) or IP address.
+# vCenter administrator user name and password, vCenter host Fully Qualified Domain Name (FQDN) or IP address, Datacenter name and Cluster name.
 # Path to OVA/OFV file, destination datastore and target network. vCenter administrator user name.
 ADMIN="administrator@vsphere.local"
 PASSWORD="Password123!"
-TARGET="vcsa.mylab.local/LAB/host/esxi.mylab.local"
-OVA="$HOME/path/to/ova/Nested_ESXi7.0u1_Appliance_Template_v1.ova"
-DATASTORE="datastore"
-NETWORK="VM Network"
+TARGET="<your-vcsa-hostname>/<your-datacenter-name>/host/<your-cluster-name>"
+OVA="$HOME/<path-to-ova>/Nested_ESXi7.0u1_Appliance_Template_v1.ova"
 
 # Assing names, IP addresses and password to ESXi servers.
 ESXI_NODE1_HOSTNAME="esxi-node-1"
@@ -45,8 +43,10 @@ ESXI_NODE3_IP="192.168.1.x"
 ESXI_NETMASK="255.255.255.0"
 ESXI_GATEWAY="192.168.1.x"
 ESXI_DNS="192.168.1.x"
-ESXI_DOMAIN="mylab.local"
+ESXI_DOMAIN="<your-domain.local>"
 ESXI_PASSWD="Password123!"
+ESXI_DATASTORE="datastore"
+ESXI_NETWORK="VM Network"
 
 # OVFTool deployment.
 echo
@@ -60,8 +60,8 @@ ovftool \
     --powerOffTarget \
     --powerOn \
     --name="${ESXI_NODE1_HOSTNAME}" \
-    --network="${NETWORK}" \
-    --datastore="${DATASTORE}" \
+    --network="${ESXI_NETWORK}" \
+    --datastore="${ESXI_DATASTORE}" \
     --X:enableHiddenProperties \
     --X:logFile=ovftool-log.txt \
     --X:logLevel=verbose \
@@ -85,8 +85,8 @@ ovftool \
     --powerOffTarget \
     --powerOn \
     --name="${ESXI_NODE2_HOSTNAME}" \
-    --network="${NETWORK}" \
-    --datastore="${DATASTORE}" \
+    --network="${ESXI_NETWORK}" \
+    --datastore="${ESXI_DATASTORE}" \
     --X:enableHiddenProperties \
     --X:logFile=ovftool-log.txt \
     --X:logLevel=verbose \
@@ -110,8 +110,8 @@ ovftool \
     --powerOffTarget \
     --powerOn \
     --name="${ESXI_NODE3_HOSTNAME}" \
-    --network="${NETWORK}" \
-    --datastore="${DATASTORE}" \
+    --network="${ESXI_NETWORK}" \
+    --datastore="${ESXI_DATASTORE}" \
     --X:enableHiddenProperties \
     --X:logFile=ovftool-log.txt \
     --X:logLevel=verbose \
