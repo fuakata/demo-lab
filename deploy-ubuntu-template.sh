@@ -19,7 +19,8 @@ echo VMware OVFTool 4.4.1 downloaded from https://code.vmware.com/web/tool/4.4.0
 echo Previously downloaded OVA file from https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova Canonical website.
 echo
 echo WARNING!
-echo This procedure will POWER OFF and DELETE the previous deployed instance.
+
+echo This procedure will OVERWRITE the previous deployed instance.
 echo
 read -n 1 -s -r -p "Press any key to continue or Control-C to abort."
 echo
