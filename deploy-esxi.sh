@@ -14,7 +14,6 @@ echo This script will deploy three ESXi hosts using the OVFTool.
 echo
 echo Requirements:
 echo VMware ESXi host.
-echo VMware vCenter Server Appliance.
 echo VMware OVFTool 4.4.1 downloaded from https://code.vmware.com/web/tool/4.4.0/ovf
 echo Previously downloaded ESXi OVA file from http://vmwa.re/nestedesxi virtuallyGhetto website.
 echo
@@ -26,11 +25,11 @@ echo
 echo
 
 # Set variables to declare LAB specific resources.
-# vCenter administrator user name and password, vCenter host Fully Qualified Domain Name (FQDN) or IP address, Datacenter name and Cluster name.
-# Path to OVA/OFV file, destination datastore and target network. vCenter administrator user name.
-ADMIN="administrator@vsphere.local"
+# ESXi user name and password, ESXi host Fully Qualified Domain Name (FQDN) or IP address.
+# Path to OVA/OFV file.
+ADMIN="root"
 PASSWORD="Password123!"
-TARGET="<your-vcsa-hostname>/<your-datacenter-name>/host/<your-cluster-name>"
+TARGET="<your-esxi-ipaddress>>"
 OVA="$HOME/<path-to-ova>/Nested_ESXi7.0u1_Appliance_Template_v1.ova"
 
 # Assing names, IP addresses and password to ESXi servers.
