@@ -1,5 +1,5 @@
 #!/bin/bash
-# Written by Jose Garces and Dante Garda
+# Written by Jose Garces
 # www.theadhoclab.com
 
 clear
