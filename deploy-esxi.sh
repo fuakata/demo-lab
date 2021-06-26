@@ -58,12 +58,15 @@ ovftool \
     --overwrite \
     --powerOffTarget \
     --powerOn \
+    --sourceType=OVA \
+    --noSSLVerify \
     --name="${ESXI_NODE1_HOSTNAME}" \
     --network="${ESXI_NETWORK}" \
     --datastore="${ESXI_DATASTORE}" \
     --X:enableHiddenProperties \
     --X:logFile=ovftool-log.txt \
     --X:logLevel=verbose \
+    --X:injectOvfEnv \
     --prop:guestinfo.hostname="${ESXI_NODE1_HOSTNAME}" \
     --prop:guestinfo.ipaddress="${ESXI_NODE1_IP}" \
     --prop:guestinfo.netmask="${ESXI_NETMASK}" \
@@ -71,7 +74,7 @@ ovftool \
     --prop:guestinfo.dns="${ESXI_DNS}" \
     --prop:guestinfo.domain="${ESXI_DOMAIN}" \
     --prop:guestinfo.password="${ESXI_PASSWD}" \
-    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}"
+    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}/"
 
 echo
 echo Deploying second ESXi host...
@@ -83,12 +86,15 @@ ovftool \
     --overwrite \
     --powerOffTarget \
     --powerOn \
+    --sourceType=OVA \
+    --noSSLVerify \
     --name="${ESXI_NODE2_HOSTNAME}" \
     --network="${ESXI_NETWORK}" \
     --datastore="${ESXI_DATASTORE}" \
     --X:enableHiddenProperties \
     --X:logFile=ovftool-log.txt \
     --X:logLevel=verbose \
+    --X:injectOvfEnv \
     --prop:guestinfo.hostname="${ESXI_NODE2_HOSTNAME}" \
     --prop:guestinfo.ipaddress="${ESXI_NODE2_IP}" \
     --prop:guestinfo.netmask="${ESXI_NETMASK}" \
@@ -96,7 +102,7 @@ ovftool \
     --prop:guestinfo.dns="${ESXI_DNS}" \
     --prop:guestinfo.domain="${ESXI_DOMAIN}" \
     --prop:guestinfo.password="${ESXI_PASSWD}" \
-    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}"
+    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}/"
 
 echo
 echo Deploying third ESXi host...
@@ -108,12 +114,15 @@ ovftool \
     --overwrite \
     --powerOffTarget \
     --powerOn \
+    --sourceType=OVA \
+    --noSSLVerify \
     --name="${ESXI_NODE3_HOSTNAME}" \
     --network="${ESXI_NETWORK}" \
     --datastore="${ESXI_DATASTORE}" \
     --X:enableHiddenProperties \
     --X:logFile=ovftool-log.txt \
     --X:logLevel=verbose \
+    --X:injectOvfEnv \
     --prop:guestinfo.hostname="${ESXI_NODE3_HOSTNAME}" \
     --prop:guestinfo.ipaddress="${ESXI_NODE3_IP}" \
     --prop:guestinfo.netmask="${ESXI_NETMASK}" \
@@ -121,4 +130,4 @@ ovftool \
     --prop:guestinfo.dns="${ESXI_DNS}" \
     --prop:guestinfo.domain="${ESXI_DOMAIN}" \
     --prop:guestinfo.password="${ESXI_PASSWD}" \
-    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}"
+    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}/"
