@@ -22,7 +22,6 @@ echo This procedure will POWER OFF and DELETE the previous deployed environment.
 echo
 read -n 1 -s -r -p "Press any key to continue or Control-C to abort"
 echo
-echo
 
 # Set variables to declare LAB specific resources.
 # ESXi user name and password, ESXi host Fully Qualified Domain Name (FQDN) or IP address.
