@@ -1,5 +1,5 @@
 #!/bin/bash
-# Written by Jose Garces
+# Written by Jose Garces and Jannio Figueroa
 # www.theadhoclab.com
 
 clear
