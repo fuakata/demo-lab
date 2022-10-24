@@ -14,7 +14,7 @@ echo This script will deploy three ESXi hosts using the OVFTool.
 echo
 echo Requirements:
 echo VMware ESXi host.
-echo VMware OVFTool 4.4.1 downloaded from https://code.vmware.com/web/tool/4.4.0/ovf
+echo VMware OVFTool 4.4.3 downloaded from https://code.vmware.com/web/tool/4.4.0/ovf
 echo Previously downloaded ESXi OVA file from http://vmwa.re/nestedesxi virtuallyGhetto website.
 echo
 echo WARNING!
@@ -30,7 +30,7 @@ echo
 ADMIN="root"
 PASSWORD="Password123!"
 TARGET="<your-esxi-ipaddress>>"
-OVA="$HOME/<path-to-ova>/Nested_ESXi7.0u1_Appliance_Template_v1.ova"
+OVA="$HOME/<path-to-ova>/Nested_ESXi8.0_IA_Appliance_Template_v2.ova"
 
 # Assing names, IP addresses and password to ESXi servers.
 ESXI_NODE1_HOSTNAME="esxi-node-1"

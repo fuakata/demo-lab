@@ -14,7 +14,7 @@ echo This script will deploy one vCenter Server Appliance using OVFTool.
 echo
 echo Requirements:
 echo VMware ESXi host
-echo VMware OVFTool 4.4.1 downloaded from https://code.vmware.com/web/tool/4.4.0/ovf
+echo VMware OVFTool 4.4.3 downloaded from https://code.vmware.com/web/tool/4.4.0/ovf
 echo VMware vCenter Server Appliance OVA downloaded from https://downloads.vmware.com
 echo
 echo WARNING!
@@ -29,13 +29,13 @@ echo
 ADMIN="root"
 PASSWORD="Password123!"
 TARGET="192.168.0.x"
-OVA="$HOME/<path-to-ova>/VMware-vCenter-Server-Appliance-7.0.1.00100-17004997_OVF10.ova"
+OVA="$HOME/<path-to-ova>/VMware-vCenter-Server-Appliance-8.0.0.10000-20519528_OVF10.ova"
 
 # Assign VCSA VM name, VCSA size, host Fully Qualified Domain Name (FQDN) or IP address, IP address networking, SSO user password and root password to VCSA.
 VCSA_NAME="vcsa-lab"
 VCSA_SIZE="tiny"
 VCSA_IP="192.168.0.x"
-VCSA_HOSTNAME="192.168.0.x"
+VCSA_HOSTNAME="<your-host-name-on-DNS>"
 VCSA_GW="192.168.0.x"
 VCSA_CIDR="24"
 VCSA_DNS="192.168.0.x"

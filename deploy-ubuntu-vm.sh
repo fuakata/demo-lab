@@ -15,7 +15,7 @@ echo
 echo Requirements:
 echo VMware ESXi host.
 echo VMware vCenter Server Appliance.
-echo VMware OVFTool 4.4.1 downloaded from https://code.vmware.com/web/tool/4.4.0/ovf
+echo VMware OVFTool 4.4.3 downloaded from https://code.vmware.com/web/tool/4.4.0/ovf
 echo Previously downloaded OVA file from https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova Canonical website.
 echo
 echo WARNING!
@@ -30,15 +30,15 @@ echo
 # Path to OVA/OFV file, destination datastore and target network.
 ADMIN="administrator@vsphere.local"
 PASSWORD='Password123!'
-TARGET="vcsa.mylab.local/LAB/host/esxi.mylab.local"
-OVA="$HOME/path/to/ova/focal-server-cloudimg-amd64.ova"
+TARGET="<vcsa.mylab.local>/LAB/host/<esxi.mylab.local>"
+OVA="$HOME/<path-to-ova>/focal-server-cloudimg-amd64.ova"
 DATASTORE="datastore"
 NETWORK="VM Network"
 
 # Assing names, IP addresses, public key and one time password to Ubuntu Cloud Image VM.
 VM_NAME="ubuntu-vm1"
 VM_HOSTNAME="ubuntu-cloud"
-VM_KEY="copy-your-public-ssh-key-here"
+VM_KEY="<copy-your-public-ssh-key-here>"
 VM_PASSWORD="Password123!"
 
 # OVF Tool deployment.

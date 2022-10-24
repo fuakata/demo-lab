@@ -31,8 +31,8 @@ echo
 # Path to OVA/OFV file, destination datastore and target network.
 ADMIN="administrator@vsphere.local"
 PASSWORD='Password123!'
-TARGET="vcsa.mylab.local/LAB/host/esxi.myhome.local"
-OVA="$HOME/path/to/ova/focal-server-cloudimg-amd64.ova"
+TARGET="<vcsa.mylab.local>/LAB/host/<esxi.myhome.local>"
+OVA="$HOME/<path-to-ova>/focal-server-cloudimg-amd64.ova"
 DATASTORE="datastore"
 NETWORK="VM Network"
 
@@ -40,7 +40,7 @@ NETWORK="VM Network"
 VM_NAME="ubuntu-focal-20.04-template"
 VM_HOSTNAME="ubuntu-cloud"
 VM_FOLDER="Templates"
-VM_KEY="copy-your-public-ssh-key-here"
+VM_KEY="<copy-your-public-ssh-key-here>"
 VM_PASSWORD="Password123!"
 
 # OVF Tool deployment.
