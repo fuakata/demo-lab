@@ -2,132 +2,81 @@
 # Written by Jose Garces
 # www.theadhoclab.com
 
+# Set variables to declare LAB specific resources.
+# ESXi user name and password, ESXi host Fully Qualified Domain Name (FQDN) or IP address.
+# Path to OVA/OFV file.
+admin="root"
+password="<your-esxi-password>"
+target="<your-esxi-ipaddress>"
+ova="$HOME/<path-to-ova>/Nested_ESXi8.0_IA_Appliance_Template_v2.ova"
+
+# Assing names, IP addresses and password to ESXi nested servers.
+esxi_hosts=(esxi-n1 esxi-n2 esxi-n3)
+esxi_netmask="255.255.255.0"
+esxi_gateway="192.168.1.x"
+esxi_dns="192.168.1.x"
+esxi_domain="<add-your-domain.local>"
+esxi_passwd="<add-your-password>"
+esxi_datastore="datastore"
+esxi_network="VM Network"
+esxi_netip="192.168.1"
+esxi_hostip="x"
+
 clear
-echo  " ____  _____ __  __  ___    _        _    ____"
-echo  "|  _ \| ____|  \/  |/ _ \  | |      / \  | __ )"
-echo  "| | | |  _| | |\/| | | | | | |     / _ \ |  _ \\"
-echo  "| |_| | |___| |  | | |_| | | |___ / ___ \| |_) |"
-echo  "|____/|_____|_|  |_|\___/  |_____/_/   \_\____/"
 echo
+echo  "      ____                          __          __  "
+echo  "     / __ \___  ____ ___  ____     / /   ____ _/ /_ "
+echo  "    / / / / _ \/ __ \`__ \/ __ \   / /   / __ \`/ __ \\"
+echo  "   / /_/ /  __/ / / / / / /_/ /  / /___/ /_/ / /_/ /"
+echo  "  /_____/\___/_/ /_/ /_/\____/  /_____/\__,_/_.___/ "
 echo
-echo This script will deploy three ESXi hosts using the OVFTool.
+echo This script will deploy the following ESXi hosts using the OVFTool.
+echo
+for vihost in ${esxi_hosts[@]}
+do
+  echo "${vihost}.${esxi_domain} with IP address ${esxi_netip}.${esxi_hostip}"
+  echo
+done
 echo
 echo Requirements:
-echo VMware ESXi host.
+echo One up and running VMware ESXi host.
 echo VMware OVFTool 4.4.3 downloaded from https://code.vmware.com/web/tool/4.4.0/ovf
-echo Previously downloaded ESXi OVA file from http://vmwa.re/nestedesxi virtuallyGhetto website.
+echo Previously downloaded Nested ESXi Virtual Appliance file from http://vmwa.re/nestedesxi virtuallyGhetto website.
 echo
 echo WARNING!
 echo This procedure will POWER OFF and DELETE the previous deployed environment.
 echo
 read -n 1 -s -r -p "Press any key to continue or Control-C to abort"
 echo
-echo
-
-# Set variables to declare LAB specific resources.
-# ESXi user name and password, ESXi host Fully Qualified Domain Name (FQDN) or IP address.
-# Path to OVA/OFV file.
-ADMIN="root"
-PASSWORD="Password123!"
-TARGET="<your-esxi-ipaddress>>"
-OVA="$HOME/<path-to-ova>/Nested_ESXi8.0_IA_Appliance_Template_v2.ova"
-
-# Assing names, IP addresses and password to ESXi servers.
-ESXI_NODE1_HOSTNAME="esxi-node-1"
-ESXI_NODE2_HOSTNAME="esxi-node-2"
-ESXI_NODE3_HOSTNAME="esxi-node-3"
-ESXI_NODE1_IP="192.168.1.x"
-ESXI_NODE2_IP="192.168.1.x"
-ESXI_NODE3_IP="192.168.1.x"
-ESXI_NETMASK="255.255.255.0"
-ESXI_GATEWAY="192.168.1.x"
-ESXI_DNS="192.168.1.x"
-ESXI_DOMAIN="<your-domain.local>"
-ESXI_PASSWD="Password123!"
-ESXI_DATASTORE="datastore"
-ESXI_NETWORK="VM Network"
 
 # OVFTool deployment.
-echo
-echo Deploying first ESXi host...
-ovftool \
-    --acceptAllEulas \
-    --allowExtraConfig \
-    --ipProtocol=IPv4 \
-    --diskMode=thin \
-    --overwrite \
-    --powerOffTarget \
-    --powerOn \
-    --sourceType=OVA \
-    --noSSLVerify \
-    --name="${ESXI_NODE1_HOSTNAME}" \
-    --network="${ESXI_NETWORK}" \
-    --datastore="${ESXI_DATASTORE}" \
-    --X:enableHiddenProperties \
-    --X:logFile=ovftool-log.txt \
-    --X:logLevel=verbose \
-    --X:injectOvfEnv \
-    --prop:guestinfo.hostname="${ESXI_NODE1_HOSTNAME}" \
-    --prop:guestinfo.ipaddress="${ESXI_NODE1_IP}" \
-    --prop:guestinfo.netmask="${ESXI_NETMASK}" \
-    --prop:guestinfo.gateway="${ESXI_GATEWAY}" \
-    --prop:guestinfo.dns="${ESXI_DNS}" \
-    --prop:guestinfo.domain="${ESXI_DOMAIN}" \
-    --prop:guestinfo.password="${ESXI_PASSWD}" \
-    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}/"
-
-echo
-echo Deploying second ESXi host...
-ovftool \
-    --acceptAllEulas \
-    --allowExtraConfig \
-    --ipProtocol=IPv4 \
-    --diskMode=thin \
-    --overwrite \
-    --powerOffTarget \
-    --powerOn \
-    --sourceType=OVA \
-    --noSSLVerify \
-    --name="${ESXI_NODE2_HOSTNAME}" \
-    --network="${ESXI_NETWORK}" \
-    --datastore="${ESXI_DATASTORE}" \
-    --X:enableHiddenProperties \
-    --X:logFile=ovftool-log.txt \
-    --X:logLevel=verbose \
-    --X:injectOvfEnv \
-    --prop:guestinfo.hostname="${ESXI_NODE2_HOSTNAME}" \
-    --prop:guestinfo.ipaddress="${ESXI_NODE2_IP}" \
-    --prop:guestinfo.netmask="${ESXI_NETMASK}" \
-    --prop:guestinfo.gateway="${ESXI_GATEWAY}" \
-    --prop:guestinfo.dns="${ESXI_DNS}" \
-    --prop:guestinfo.domain="${ESXI_DOMAIN}" \
-    --prop:guestinfo.password="${ESXI_PASSWD}" \
-    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}/"
-
-echo
-echo Deploying third ESXi host...
-ovftool \
-    --acceptAllEulas \
-    --allowExtraConfig \
-    --ipProtocol=IPv4 \
-    --diskMode=thin \
-    --overwrite \
-    --powerOffTarget \
-    --powerOn \
-    --sourceType=OVA \
-    --noSSLVerify \
-    --name="${ESXI_NODE3_HOSTNAME}" \
-    --network="${ESXI_NETWORK}" \
-    --datastore="${ESXI_DATASTORE}" \
-    --X:enableHiddenProperties \
-    --X:logFile=ovftool-log.txt \
-    --X:logLevel=verbose \
-    --X:injectOvfEnv \
-    --prop:guestinfo.hostname="${ESXI_NODE3_HOSTNAME}" \
-    --prop:guestinfo.ipaddress="${ESXI_NODE3_IP}" \
-    --prop:guestinfo.netmask="${ESXI_NETMASK}" \
-    --prop:guestinfo.gateway="${ESXI_GATEWAY}" \
-    --prop:guestinfo.dns="${ESXI_DNS}" \
-    --prop:guestinfo.domain="${ESXI_DOMAIN}" \
-    --prop:guestinfo.password="${ESXI_PASSWD}" \
-    ${OVA} "vi://${ADMIN}:${PASSWORD}@${TARGET}/"
+for vihost in ${esxi_hosts[@]}
+do
+  echo "Deploying ESXi host ${vihost}.${esxi_domain}..."
+  ip=$((esxi_hostip++))
+  ovftool \
+      --acceptAllEulas \
+      --allowExtraConfig \
+      --ipProtocol=IPv4 \
+      --diskMode=thin \
+      --overwrite \
+      --powerOffTarget \
+      --powerOn \
+      --sourceType=OVA \
+      --noSSLVerify \
+      --name="${vihost}" \
+      --network="${esxi_network}" \
+      --datastore="${esxi_datastore}" \
+      --X:enableHiddenProperties \
+      --X:logFile=ovftool-log.txt \
+      --X:logLevel=verbose \
+      --X:injectOvfEnv \
+      --prop:guestinfo.hostname="${vihost}.${esxi_domain}" \
+      --prop:guestinfo.ipaddress="${esxi_netip}.${ip}" \
+      --prop:guestinfo.netmask="${esxi_netmask}" \
+      --prop:guestinfo.gateway="${esxi_gateway}" \
+      --prop:guestinfo.dns="${esxi_dns}" \
+      --prop:guestinfo.domain="${esxi_domain}" \
+      --prop:guestinfo.password="${esxi_passwd}" \
+      ${ova} "vi://${admin}:${password}@${target}/"
+done
